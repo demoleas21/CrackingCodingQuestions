@@ -1,3 +1,3 @@
-# READme
+# README
 
 Coding questions
