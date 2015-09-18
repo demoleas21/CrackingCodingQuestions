@@ -7,6 +7,7 @@ def uniqueCheck(string):
             return False
     return True
 
+    """ Old Code """
     """for x in range (0, len(string)):
         for y in range (x+1, len(string)):
             if string[x] == string[y]:
