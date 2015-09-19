@@ -2,3 +2,6 @@
 
 def PalPerm(string):
 	pass
+
+string = 'rraacce'
+print (PalPerm(string))
