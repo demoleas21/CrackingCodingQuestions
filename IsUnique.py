@@ -1,5 +1,7 @@
 """ 1.1 Is Unique """
 
+from unittest import TestCase
+
 def uniqueCheck(string):
     sortedStr = sorted(string)
     for x in range(0,len(string)-1):
@@ -14,8 +16,11 @@ def uniqueCheck(string):
                 return False
     return True"""
 
-string = 'andrew'
-print(uniqueCheck(string)) # Should return True
+class isUniqueTest(TestCase):
+    def testUniqueTrue(self):
+        string = 'andrew'
+        self.assertTrue(uniqueCheck(string))
 
-string = 'susan'
-print(uniqueCheck(string)) # Should return False
+    def testUniqueFalse(self):
+        string = 'susan'
+        self.assertFalse(uniqueCheck(string))

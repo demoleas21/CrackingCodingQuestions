@@ -1,20 +1,32 @@
 """ 1.2 CheckPermutation """
 
+from unittest import TestCase
+
 def permCheck(stringA, stringB):
-	count = 0
-	for i in range(0, len(stringB)):
-		for j in range(0, len(stringA)):
-			if stringB[i] == stringA[j]:
-				count = count + 1
-	if count == len(stringB):
-		return True
-	else:
-		return False
+    if len(stringA) != len(stringB):
+        return False
+    count = 0
+    for i in range(0, len(stringB)):
+        for j in range(0, len(stringA)):
+            if stringB[i] == stringA[j]:
+                count = count + 1
+    if count == len(stringB):
+        return True
+    else:
+        return False
 
-stringA = 'andrew'
-stringB = 'ande'
-print (permCheck(stringA, stringB)) # Should return True
+class isPermutationsTrue(TestCase):
+    def testPermIsTrue(self):
+        stringA = 'andrew'
+        stringB = 'werdna'
+        self.assertTrue(permCheck(stringA, stringB))
 
-stringA = 'andrew'
-stringB = 'andy'
-print (permCheck(stringA, stringB)) # Should return False
+    def testPermIsFalse(self):
+        stringA = 'andrew'
+        stringB = 'andy'
+        self.assertFalse(permCheck(stringA, stringB))
+
+    def testPermLengthNotEqual(self):
+        stringA = 'andrew'
+        stringB = 'werdn'
+        self.assertFalse(permCheck(stringA, stringB))
