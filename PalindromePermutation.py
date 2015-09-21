@@ -3,18 +3,19 @@
 from itertools import permutations
 
 def PalPerm(string):
+    spc_chk_string = spaceCheck(string)
     letterCount = {}
-    for key in string:
+    for key in spc_chk_string:
         try:
             letterCount[key] = letterCount[key] + 1
         except:
             letterCount[key] = 1
 
-    if len(string) % 2 == 0: # even
+    if len(spc_chk_string) % 2 == 0: # even
         newString = ''
         for key in letterCount:
-            halfCount = letterCount[key] / 2
-            for _ in xrange(halfCount):
+            halfCount = letterCount[key] // 2
+            for _ in range(0, halfCount):
                 newString = newString + key
         perm_str = permStr(newString)
         perm_rev = []
@@ -25,7 +26,7 @@ def PalPerm(string):
             final_str.append(perm_str[i] + perm_rev[i])
         return final_str
 
-    if len(string) % 2 == 1: # odd
+    if len(spc_chk_string) % 2 == 1: # odd
         for key in letterCount:
             if letterCount[key] % 2 == 1:
                 pivot = key
@@ -33,8 +34,8 @@ def PalPerm(string):
 
         newString = ''
         for key in letterCount:
-            halfCount = letterCount[key] / 2
-            for _ in xrange(halfCount):
+            halfCount = letterCount[key] // 2
+            for _ in range(0, halfCount):
                 newString = newString + key
         perm_str = permStr(newString)
         perm_rev = []
@@ -47,10 +48,18 @@ def PalPerm(string):
 
 def permStr(string):
     perm_results = [''.join(p) for p in permutations(string)]
-
     return perm_results
 
+def spaceCheck(string):
+    strlst = list(string)
+    for i in range(0, len(strlst)):
+        if strlst[i] == ' ':
+            space = i
+            strlst[i] = ''
+    string = "".join(strlst)
+    return string
 
-string = 'rraaccee'
+
+string = 'rra a cce'
 print (PalPerm(string))
 #PalPerm(string)
