@@ -3,15 +3,20 @@
 from itertools import permutations
 
 def PalPerm(string):
-    spc_chk_string = spaceCheck(string)
+    strlst = list(string)
+    for i in range(0, len(strlst)):
+        if strlst[i] == ' ':
+            space = i
+            strlst[i] = ''
+    string = "".join(strlst)
     letterCount = {}
-    for key in spc_chk_string:
+    for key in string:
         try:
             letterCount[key] = letterCount[key] + 1
         except:
             letterCount[key] = 1
 
-    if len(spc_chk_string) % 2 == 0: # even
+    if len(string) % 2 == 0: # even
         newString = ''
         for key in letterCount:
             halfCount = letterCount[key] // 2
@@ -26,7 +31,7 @@ def PalPerm(string):
             final_str.append(perm_str[i] + perm_rev[i])
         return final_str
 
-    if len(spc_chk_string) % 2 == 1: # odd
+    if len(string) % 2 == 1: # odd
         for key in letterCount:
             if letterCount[key] % 2 == 1:
                 pivot = key
@@ -50,16 +55,6 @@ def permStr(string):
     perm_results = [''.join(p) for p in permutations(string)]
     return perm_results
 
-def spaceCheck(string):
-    strlst = list(string)
-    for i in range(0, len(strlst)):
-        if strlst[i] == ' ':
-            space = i
-            strlst[i] = ''
-    string = "".join(strlst)
-    return string
-
-
-string = 'rra a cce'
+string = 'rraacce'
 print (PalPerm(string))
 #PalPerm(string)
