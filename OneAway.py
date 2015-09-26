@@ -20,7 +20,10 @@ def oneAway(stringA, stringB):
             if stringA[i] != stringB[j]:
                 diff = diff + 1
                 j = j - 1
-            j = j + 1
+            if i == (len(stringA) - 1) and diff == 0:
+                return True
+            else:
+                j = j + 1
         if diff > 1:
             return False
         else:
@@ -32,10 +35,10 @@ def oneAway(stringA, stringB):
             if stringB[i] != stringA[j]:
                 diff = diff + 1
                 j = j - 1
-            print (stringB[i])
-            print (stringA[j])
-            print ("\n")
-            j = j + 1
+            if i == (len(stringA) - 1) and diff == 0:
+                return True
+            else:
+                j = j + 1
         if diff > 1:
             return False
         else:
@@ -86,6 +89,16 @@ class isOneAway(TestCase):
     def testOneLessFalse(self):
         stringA = 'evan'
         stringB = 'ven'
+        self.assertFalse(oneAway(stringA, stringB))
+
+    def testTwoLessFalse(self):
+        stringA = 'kevan'
+        stringB = 'van'
+        self.assertFalse(oneAway(stringA, stringB))
+
+    def testTwoLessFalse(self):
+        stringA = 'evan'
+        stringB = 'stevan'
         self.assertFalse(oneAway(stringA, stringB))
         
 
