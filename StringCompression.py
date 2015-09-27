@@ -1,6 +1,7 @@
 """ 1.6 String Compression """
 
 def compressor(string):
+    
     compression_table = {}
     for key in string:
         try:
@@ -11,8 +12,12 @@ def compressor(string):
     compressed_string = []
     for key in compression_table:
         compressed_string.append(key)
-        compressed_string.append(compression_table[key])
-    return compressed_string
+        compressed_string.append(str(compression_table[key]))
+    final_string = "".join(compressed_string)
+    if len(string) < len(final_string):
+        return string
+    else:
+        return final_string
 
 string = 'aabcccaa'
 print(compressor(string))
