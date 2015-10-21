@@ -1,47 +1,31 @@
 """ 2.1 Remove Dups """
 
-class LinkedList(object):
+class OccupiedNodeError(Exception):
+    """ The next node is occupied and cannot be added """
+
+class LinkedList:
+    """ Allows for Nodes to not worry about the head value and allows all
+     external references to simply point to the head property of the linked
+     list """
     def __init__(self, head=None):
         self.head = head
 
-    def insert(self, data):
-        new_node = Node(data)
-        new_node.set_next(self.head)
-        self.head = new_node
 
-    def size(self):
-        current = self.head
-        count = 0
-        while current:
-            count += 1
-            current = current.get_next()
-        return count
+class Node:
+    """ Singly Linked List Node """
+    def __init__(self, data, nextNode=None):
+        self.data = data
+        self.next = nextNode
 
-    def search(self, data):
-        current = self.head
-        found = False
-        while current and found is False:
-            if current.get_data() == data:
-                found = True
-            else:
-                current = current.get_next()
-        if current is None:
-            raise ValueError("Data not in list")
-        return current
-
-    def delete(self, data):
-        current = self.head
-        previous = None
-        found = False
-        while current and found is False:
-            if current.get_data() == data:
-                found = True
-            else:
-                previous = current
-                current = current.get_next()
-        if current is None:
-            raise ValueError("Data not in list")
-        if previous is None:
-            self.head = current.get_next()
+    def addNode(self, data):
+        if type(data) != type(self):
+            nextNode = Node(data)
         else:
-            previous.set_next(current.get_next())
+            nextNode = data
+
+        if not self.next:
+            self.next = nextNode
+        else:
+            raise OccupiedNodeError(
+                'The data value {0} cannot be added because the next node'\
+                'already exists'.format(data))
