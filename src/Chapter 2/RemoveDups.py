@@ -38,6 +38,12 @@ class LinkedList (object):
                 prev_node = this_node
                 this_node = this_node.get_next()
         return False
+    def display_list (self):
+        this_node = self.root
+        while this_node:
+            print (this_node.get_data())
+            this_node = this_node.get_next()
+
 
 MyList = LinkedList()
 MyList.add(5)
@@ -46,3 +52,4 @@ MyList.add(12)
 print(MyList.remove(12))
 print(MyList.remove(4))
 print(MyList.remove(12))
+MyList.display_list()
