@@ -1,7 +1,6 @@
 """ 1.6 String Compression """
 
 def compressor(string):
-    
     compression_table = {}
     for key in string:
         try:
