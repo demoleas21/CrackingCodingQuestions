@@ -7,22 +7,22 @@ class Node(object):
         self.next_node = n
 
     @property
-    def next(self):
+    def next_node(self):
         """Gets next node"""
-        return self.next_node
+        return self._next_node
 
-    @next.setter
-    def next(self):
+    @next_node.setter
+    def next_node(self, n):
         """Sets the next node"""
         self.next_node = n
 
     @property
     def data(self):
         """Gets value of node"""
-        return self.data
+        return self._data
 
     @data.setter
-    def data(self):
+    def data(self, d):
         """Sets value of data"""
         self.data = d
 
@@ -32,9 +32,9 @@ class LinkedList(object):
     def __init__(self, r=None):
         self.root = r
 
-    def add(self, d):
+    def add(self, da):
         """Adds values to linked list"""
-        new_node = Node(d, self.root)
+        new_node = Node(da, self.root)
         self.root = new_node
 
     def remove(self, d):
@@ -44,13 +44,13 @@ class LinkedList(object):
         while this_node:
             if this_node.data == d:
                 if prev_node:
-                    prev_node.next(this_node.next)
+                    prev_node.next_node(this_node.next_node)
                 else:
                     self.root = this_node
                 return True
             else:
                 prev_node = this_node
-                this_node = this_node.next
+                this_node = this_node.next_node
         return False
 
     def display_list(self):
@@ -58,32 +58,29 @@ class LinkedList(object):
         this_node = self.root
         while this_node:
             print(this_node.data)
-            this_node = this_node.next
+            this_node = this_node.next_node
 
     def find_dups(self):
         """Finds duplicate elements"""
         this_node = self.root
         dupe_table = {}
         while this_node:
-            try:
-                dupe_table[this_node.data] += 1
-            except:
-                dupe_table[this_node.data] = 1
+            dupe_table.get(this_node.data, False)
             print(dupe_table)
             for key in dupe_table:
                 if dupe_table[key] > 1:
                     mylist.remove(this_node.data)
-            this_node = this_node.next
+            this_node = this_node.next_node
         print(dupe_table)
 
 
 
 mylist = LinkedList()
 mylist.add(8)
-mylist.add(5)
-mylist.add(12)
-mylist.add(10)
-print(mylist.remove(8))
-print(mylist.remove(4))
-mylist.display_list()
-mylist.find_dups()
+#mylist.add(5)
+#mylist.add(12)
+#mylist.add(10)
+#print(mylist.remove(8))
+#print(mylist.remove(4))
+#mylist.display_list()
+#mylist.find_dups()
