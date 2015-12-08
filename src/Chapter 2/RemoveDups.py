@@ -2,51 +2,53 @@
 
 class Node(object):
     """Node Class"""
-    def __init__(self, d, n=None):
-        self.data = d
-        self.next_node = n
-
+    def __init__(self):
+        self.data = None
+        self.next_node = None
+"""
     @property
     def next_node(self):
-        """Gets next node"""
+        Gets next node
         return self._next_node
 
     @next_node.setter
     def next_node(self, n):
-        """Sets the next node"""
+        Sets the next node
         self.next_node = n
 
     @property
     def data(self):
-        """Gets value of node"""
+        Gets value of node
         return self._data
 
     @data.setter
     def data(self, d):
-        """Sets value of data"""
+        Sets value of data
         self.data = d
-
+"""
 
 class LinkedList(object):
     """Linked List Class"""
-    def __init__(self, r=None):
-        self.root = r
+    def __init__(self):
+        self.current_node = None
 
-    def add(self, da):
+    def add(self, d):
         """Adds values to linked list"""
-        new_node = Node(da, self.root)
-        self.root = new_node
+        new_node = Node()
+        new_node.data = d
+        new_node.next_node = self.current_node
+        self.current_node = new_node
 
     def remove(self, d):
         """Removes values from linked list"""
-        this_node = self.root
+        this_node = self.current_node
         prev_node = None
         while this_node:
             if this_node.data == d:
                 if prev_node:
                     prev_node.next_node(this_node.next_node)
                 else:
-                    self.root = this_node
+                    self.current_node = this_node
                 return True
             else:
                 prev_node = this_node
@@ -55,14 +57,14 @@ class LinkedList(object):
 
     def display_list(self):
         """Displays Linked List elements"""
-        this_node = self.root
+        this_node = self.current_node
         while this_node:
             print(this_node.data)
             this_node = this_node.next_node
 
     def find_dups(self):
         """Finds duplicate elements"""
-        this_node = self.root
+        this_node = self.current_node
         dupe_table = {}
         while this_node:
             dupe_table.get(this_node.data, False)
@@ -77,10 +79,10 @@ class LinkedList(object):
 
 mylist = LinkedList()
 mylist.add(8)
-#mylist.add(5)
-#mylist.add(12)
-#mylist.add(10)
+mylist.add(5)
+mylist.add(12)
+mylist.add(8)
 #print(mylist.remove(8))
 #print(mylist.remove(4))
-#mylist.display_list()
-#mylist.find_dups()
+mylist.display_list()
+mylist.find_dups()
