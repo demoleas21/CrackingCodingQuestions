@@ -67,13 +67,12 @@ class LinkedList(object):
         this_node = self.current_node
         dupe_table = {}
         while this_node:
-            dupe_table.get(this_node.data, True)
-            print(dupe_table)
+            table_check = dupe_table.get(this_node.data, 0)
+            dupe_table[this_node.data] = table_check + 1
             for key in dupe_table:
                 if dupe_table[key] > 1:
                     mylist.remove(this_node.data)
             this_node = this_node.next_node
-        print(dupe_table)
 
 
 
@@ -81,8 +80,9 @@ mylist = LinkedList()
 mylist.add(8)
 mylist.add(5)
 mylist.add(12)
-mylist.add(9)
+mylist.add(8)
 print(mylist.remove(12))
 print(mylist.remove(4))
 mylist.display_list()
 mylist.find_dups()
+mylist.display_list()
