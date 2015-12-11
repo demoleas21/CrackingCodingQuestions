@@ -101,6 +101,33 @@ class TestCases(TestCase):
         check_list = [12, 5, 8]
         assert mylist.find_list() == check_list
 
+    def testRemoveOneDupe4(self):
+        mylist.add(5)
+        mylist.add(8)
+        mylist.add(8)
+        mylist.add(12)
+        mylist.del_dups()
+        check_list = [12, 8, 5]
+        assert mylist.find_list() == check_list
+
+    def testRemoveOneDupe5(self):
+        mylist.add(5)
+        mylist.add(8)
+        mylist.add(12)
+        mylist.add(8)
+        mylist.del_dups()
+        check_list = [12, 8, 5]
+        assert mylist.find_list() == check_list
+
+    def testRemoveOneDupe6(self):
+        mylist.add(5)
+        mylist.add(12)
+        mylist.add(8)
+        mylist.add(8)
+        mylist.del_dups()
+        check_list = [8, 12, 5]
+        assert mylist.find_list() == check_list
+
     def testRemoveOneTrip1(self):
         mylist.add(8)
         mylist.add(8)
@@ -135,4 +162,40 @@ class TestCases(TestCase):
         mylist.add(8)
         mylist.del_dups()
         check_list = [8, 12]
+        assert mylist.find_list() == check_list
+
+    def testRemoveTwoDupes1(self):
+        mylist.add(8)
+        mylist.add(8)
+        mylist.add(12)
+        mylist.add(12)
+        mylist.del_dups()
+        check_list = [12, 8]
+        assert mylist.find_list() == check_list
+
+    def testRemoveTwoDupes2(self):
+        mylist.add(8)
+        mylist.add(12)
+        mylist.add(8)
+        mylist.add(12)
+        mylist.del_dups()
+        check_list = [12, 8]
+        assert mylist.find_list() == check_list
+
+    def testRemoveTwoDupes3(self):
+        mylist.add(8)
+        mylist.add(12)
+        mylist.add(12)
+        mylist.add(8)
+        mylist.del_dups()
+        check_list = [8, 12]
+        assert mylist.find_list() == check_list
+
+    def testRemoveNoDupes(self):
+        mylist.add(8)
+        mylist.add(5)
+        mylist.add(12)
+        mylist.add(9)
+        mylist.del_dups()
+        check_list = [9, 12, 5, 8]
         assert mylist.find_list() == check_list
