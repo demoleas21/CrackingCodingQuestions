@@ -1,31 +1,13 @@
 """2.1 Remove Dupes"""
 
+from unittest import TestCase
+
 class Node(object):
     """Node Class"""
     def __init__(self):
         self.data = None
         self.next_node = None
-"""
-    @property
-    def next_node(self):
-        Gets next node
-        return self._next_node
 
-    @next_node.setter
-    def next_node(self, n):
-        Sets the next node
-        self.next_node = n
-
-    @property
-    def data(self):
-        Gets value of node
-        return self._data
-
-    @data.setter
-    def data(self, d):
-        Sets value of data
-        self.data = d
-"""
 
 class LinkedList(object):
     """Linked List Class"""
@@ -55,14 +37,16 @@ class LinkedList(object):
             this_node = this_node.next_node
         return False
 
-    def display_list(self):
-        """Displays Linked List elements"""
+    def find_list(self):
+        """Finds Linked List elements"""
         this_node = self.current_node
+        node_list = []
         while this_node:
-            print(this_node.data)
+            node_list.append(this_node.data)
             this_node = this_node.next_node
+        return node_list
 
-    def find_dups(self):
+    def del_dups(self):
         """Finds duplicate elements"""
         this_node = self.current_node
         dupe_table = {}
@@ -72,17 +56,173 @@ class LinkedList(object):
             for key in dupe_table:
                 if dupe_table[key] > 1:
                     mylist.remove(this_node.data)
+                    dupe_table[this_node.data] -= 1
             this_node = this_node.next_node
 
 
-
 mylist = LinkedList()
-mylist.add(8)
-mylist.add(5)
-mylist.add(12)
-mylist.add(8)
-print(mylist.remove(12))
-print(mylist.remove(4))
-mylist.display_list()
-mylist.find_dups()
-mylist.display_list()
+
+
+class TestCases(TestCase):
+    """Test Class"""
+    def testRemoveOneDupe1(self):
+        mylist.add(8)
+        mylist.add(8)
+        mylist.add(5)
+        mylist.add(12)
+        mylist.del_dups()
+        check_list = [12, 5, 8]
+        self.assertEqual(mylist.find_list(), check_list)
+        mylist.remove(12)
+        mylist.remove(5)
+        mylist.remove(8)
+
+    def testRemoveOneDupe2(self):
+        mylist.add(8)
+        mylist.add(5)
+        mylist.add(8)
+        mylist.add(12)
+        mylist.del_dups()
+        check_list = [12, 5, 8]
+        self.assertEqual(mylist.find_list(), check_list)
+        mylist.remove(12)
+        mylist.remove(5)
+        mylist.remove(8)
+
+    def testRemoveOneDupe3(self):
+        mylist.add(8)
+        mylist.add(5)
+        mylist.add(12)
+        mylist.add(8)
+        mylist.del_dups()
+        check_list = [12, 5, 8]
+        self.assertEqual(mylist.find_list(), check_list)
+        mylist.remove(12)
+        mylist.remove(5)
+        mylist.remove(8)
+
+    def testRemoveOneDupe4(self):
+        mylist.add(5)
+        mylist.add(8)
+        mylist.add(8)
+        mylist.add(12)
+        mylist.del_dups()
+        check_list = [12, 8, 5]
+        self.assertEqual(mylist.find_list(), check_list)
+        mylist.remove(12)
+        mylist.remove(5)
+        mylist.remove(8)
+
+    def testRemoveOneDupe5(self):
+        mylist.add(5)
+        mylist.add(8)
+        mylist.add(12)
+        mylist.add(8)
+        mylist.del_dups()
+        check_list = [12, 8, 5]
+        self.assertEqual(mylist.find_list(), check_list)
+        mylist.remove(12)
+        mylist.remove(5)
+        mylist.remove(8)
+
+    def testRemoveOneDupe6(self):
+        mylist.add(5)
+        mylist.add(12)
+        mylist.add(8)
+        mylist.add(8)
+        mylist.del_dups()
+        check_list = [8, 12, 5]
+        self.assertEqual(mylist.find_list(), check_list)
+        mylist.remove(12)
+        mylist.remove(5)
+        mylist.remove(8)
+
+    def testRemoveOneTrip1(self):
+        mylist.add(8)
+        mylist.add(8)
+        mylist.add(8)
+        mylist.add(12)
+        mylist.del_dups()
+        check_list = [12, 8]
+        self.assertEqual(mylist.find_list(), check_list)
+        mylist.remove(12)
+        mylist.remove(8)
+
+    def testRemoveOneTrip2(self):
+        mylist.add(8)
+        mylist.add(8)
+        mylist.add(12)
+        mylist.add(8)
+        mylist.del_dups()
+        check_list = [12, 8]
+        self.assertEqual(mylist.find_list(), check_list)
+        mylist.remove(12)
+        mylist.remove(8)
+
+    def testRemoveOneTrip3(self):
+        mylist.add(8)
+        mylist.add(12)
+        mylist.add(8)
+        mylist.add(8)
+        mylist.del_dups()
+        check_list = [12, 8]
+        self.assertEqual(mylist.find_list(), check_list)
+        mylist.remove(12)
+        mylist.remove(8)
+
+    def testRemoveOneTrip4(self):
+        mylist.add(12)
+        mylist.add(8)
+        mylist.add(8)
+        mylist.add(8)
+        mylist.del_dups()
+        check_list = [8, 12]
+        self.assertEqual(mylist.find_list(), check_list)
+        mylist.remove(12)
+        mylist.remove(8)
+
+    def testRemoveTwoDupes1(self):
+        mylist.add(8)
+        mylist.add(8)
+        mylist.add(12)
+        mylist.add(12)
+        mylist.del_dups()
+        check_list = [12, 8]
+        self.assertEqual(mylist.find_list(), check_list)
+        mylist.remove(12)
+        mylist.remove(8)
+
+    def testRemoveTwoDupes2(self):
+        mylist.add(8)
+        mylist.add(12)
+        mylist.add(8)
+        mylist.add(12)
+        mylist.del_dups()
+        check_list = [12, 8]
+        self.assertEqual(mylist.find_list(), check_list)
+        mylist.remove(12)
+        mylist.remove(8)
+
+    def testRemoveTwoDupes3(self):
+        mylist.add(8)
+        mylist.add(12)
+        mylist.add(12)
+        mylist.add(8)
+        mylist.del_dups()
+        check_list = [12, 8]
+        self.assertEqual(mylist.find_list(), check_list)
+        mylist.remove(12)
+        mylist.remove(8)
+
+    def testRemoveNoDupes(self):
+        mylist.add(8)
+        mylist.add(5)
+        mylist.add(12)
+        mylist.add(9)
+        mylist.del_dups()
+        check_list = [9, 12, 5, 8]
+        self.assertEqual(mylist.find_list(), check_list)
+        mylist.remove(12)
+        mylist.remove(5)
+        mylist.remove(8)
+        mylist.remove(9)
