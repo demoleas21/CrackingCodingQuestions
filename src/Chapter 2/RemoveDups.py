@@ -68,6 +68,7 @@ class LinkedList(object):
                     mylist.remove(this_node.data)
             this_node = this_node.next_node
 
+
 mylist = LinkedList()
 
 class TestCases(TestCase):
