@@ -68,7 +68,6 @@ class LinkedList(object):
                     mylist.remove(this_node.data)
             this_node = this_node.next_node
 
-
 mylist = LinkedList()
 
 class TestCases(TestCase):
@@ -80,6 +79,7 @@ class TestCases(TestCase):
         mylist.add(12)
         mylist.del_dups()
         check_list = [12, 5, 8]
+        print(mylist.find_list())
         assert mylist.find_list() == check_list
 
     def testRemoveOneDupe2(self):
@@ -99,6 +99,7 @@ class TestCases(TestCase):
         mylist.add(8)
         mylist.del_dups()
         check_list = [12, 5, 8]
+        print(mylist.find_list())
         assert mylist.find_list() == check_list
 
     def testRemoveOneDupe4(self):
@@ -108,6 +109,7 @@ class TestCases(TestCase):
         mylist.add(12)
         mylist.del_dups()
         check_list = [12, 8, 5]
+        print(mylist.find_list())
         assert mylist.find_list() == check_list
 
     def testRemoveOneDupe5(self):
@@ -117,6 +119,7 @@ class TestCases(TestCase):
         mylist.add(8)
         mylist.del_dups()
         check_list = [12, 8, 5]
+        print(mylist.find_list())
         assert mylist.find_list() == check_list
 
     def testRemoveOneDupe6(self):
@@ -126,6 +129,7 @@ class TestCases(TestCase):
         mylist.add(8)
         mylist.del_dups()
         check_list = [8, 12, 5]
+        print(mylist.find_list())
         assert mylist.find_list() == check_list
 
     def testRemoveOneTrip1(self):
@@ -135,6 +139,7 @@ class TestCases(TestCase):
         mylist.add(12)
         mylist.del_dups()
         check_list = [12, 8]
+        print(mylist.find_list())
         assert mylist.find_list() == check_list
 
     def testRemoveOneTrip2(self):
@@ -144,6 +149,7 @@ class TestCases(TestCase):
         mylist.add(8)
         mylist.del_dups()
         check_list = [12, 8]
+        print(mylist.find_list())
         assert mylist.find_list() == check_list
 
     def testRemoveOneTrip3(self):
@@ -153,6 +159,7 @@ class TestCases(TestCase):
         mylist.add(8)
         mylist.del_dups()
         check_list = [12, 8]
+        print(mylist.find_list())
         assert mylist.find_list() == check_list
 
     def testRemoveOneTrip4(self):
@@ -162,6 +169,7 @@ class TestCases(TestCase):
         mylist.add(8)
         mylist.del_dups()
         check_list = [8, 12]
+        print(mylist.find_list())
         assert mylist.find_list() == check_list
 
     def testRemoveTwoDupes1(self):
@@ -171,6 +179,7 @@ class TestCases(TestCase):
         mylist.add(12)
         mylist.del_dups()
         check_list = [12, 8]
+        print(mylist.find_list())
         assert mylist.find_list() == check_list
 
     def testRemoveTwoDupes2(self):
@@ -180,6 +189,7 @@ class TestCases(TestCase):
         mylist.add(12)
         mylist.del_dups()
         check_list = [12, 8]
+        print(mylist.find_list())
         assert mylist.find_list() == check_list
 
     def testRemoveTwoDupes3(self):
@@ -189,6 +199,7 @@ class TestCases(TestCase):
         mylist.add(8)
         mylist.del_dups()
         check_list = [8, 12]
+        print(mylist.find_list())
         assert mylist.find_list() == check_list
 
     def testRemoveNoDupes(self):
@@ -198,4 +209,5 @@ class TestCases(TestCase):
         mylist.add(9)
         mylist.del_dups()
         check_list = [9, 12, 5, 8]
+        print(mylist.find_list())
         assert mylist.find_list() == check_list
