@@ -26,3 +26,7 @@ class Stack(object):
         return self.container == []
 
 
+class StackSet(object):
+    """Set of stacks"""
+    def __init__(self):
+        pass
