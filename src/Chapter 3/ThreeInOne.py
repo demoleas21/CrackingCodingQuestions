@@ -21,7 +21,7 @@ class Stack(object):
         """Display size of stack"""
         return len(self.container)
 
-    def isEmpty(self):
+    def is_empty(self):
         """Informs if stack is empty"""
         return self.container == []
 
@@ -47,7 +47,7 @@ class Queue(object):
         """Display size of queue"""
         return len(self.container)
 
-    def isEmpty(self):
+    def is_empty(self):
         """Informs if stack is empty"""
         return self.container == []
 
@@ -58,9 +58,9 @@ stack.push(2)
 print(stack.size())
 stack.pop()
 print(stack.peek())
-print(stack.isEmpty())
+print(stack.is_empty())
 stack.pop()
-print(stack.isEmpty())
+print(stack.is_empty())
 
 queue=Queue()
 queue.push(1)
@@ -68,6 +68,6 @@ queue.push(2)
 print(queue.size())
 queue.pop()
 print(queue.peek())
-print(queue.isEmpty())
+print(queue.is_empty())
 queue.pop()
-print(queue.isEmpty())
+print(queue.is_empty())

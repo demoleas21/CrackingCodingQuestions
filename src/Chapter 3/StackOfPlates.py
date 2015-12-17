@@ -21,12 +21,32 @@ class Stack(object):
         """Display size of stack"""
         return len(self.container)
 
-    def isEmpty(self):
+    def is_empty(self):
         """Informs if stack is empty"""
         return self.container == []
 
 
-class StackSet(object):
+class StackSet(Stack):
     """Set of stacks"""
-    def __init__(self):
+
+    def push(self, data):
+        """Adds data to set of stacks"""
         pass
+
+    def pop(self):
+        """Removes the top element of the set"""
+        pass
+
+    def peek(self):
+        """Display the top of the set"""
+        pass
+
+    def size(self):
+        """Display size of set"""
+        pass
+
+    def is_empty(self):
+        """Informs if the set is empty"""
+        pass
+
+
