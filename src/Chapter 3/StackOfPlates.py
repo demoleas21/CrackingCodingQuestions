@@ -31,7 +31,7 @@ class StackSet(Stack):
 
     def push(self, data):
         """Adds data to set of stacks"""
-        pass
+        pass    
 
     def pop(self):
         """Removes the top element of the set"""
